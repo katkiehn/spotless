@@ -12,6 +12,12 @@ app.use(
     )
 );
 
+app.get("/api/users/me", (req, res) => {
+    res.json({
+        isLoggedIn: false,
+    });
+});
+
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
