@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 import Homepage from "./views/homepage";
 import UserPage from "./views/user-page";
 import Register from "./views/register";
+import Login from "./views/login";
 
 // ---------------------------------------------------------------Routers----------------------
 const NotLoggedInRouter = () => {
@@ -15,6 +16,9 @@ const NotLoggedInRouter = () => {
                 </Route>
                 <Route exact path="/register">
                     <Register />
+                </Route>
+                <Route exact path="/login">
+                    <Login />
                 </Route>
             </BrowserRouter>
         </>

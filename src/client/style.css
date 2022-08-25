@@ -1,0 +1,31 @@
+/* color scheme
+#4ABDAC  (fresh-turquoise)
+#FC4A1A  (vermillion-orange)
+#F7B733   (sunshine-yellow)
+#DFDCE3   (clean- light grey)
+ */
+
+body {
+    /* background-image: url("https://media.istockphoto.com/vectors/cleaning-vector-illustration-concept-professional-hygiene-service-for-vector-id1339147706?b=1&k=20&m=1339147706&s=612x612&w=0&h=hIRtvGMv_oYIhQ-Zk0kfSXbng8bjLdUGouS3AxPbcOM="); */
+    background-color: #4abdac;
+}
+
+header {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 2px solid #dfdce3;
+    width: 100%;
+    background-color: #ffffff;
+    margin: 0 auto;
+}
+
+h1 {
+    color: #fc4a1a;
+    font-weight: bold;
+}
+a {
+    color: #dfdce3;
+    text-decoration: none;
+    color: #777;
+}
