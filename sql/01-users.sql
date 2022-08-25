@@ -5,5 +5,6 @@ CREATE TABLE users(
     name VARCHAR NOT NULL CHECK (name != ''),
     email VARCHAR UNIQUE NOT NULL CHECK (email != ''),
     password_hash VARCHAR NOT NULL CHECK(password_hash != ''),
-    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    tasks_per_week INTEGER NOT NULL DEFAULT 2
 );

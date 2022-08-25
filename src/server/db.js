@@ -54,7 +54,7 @@ module.exports.getUserById = (id) => {
     return db
         .query(
             `
-    SELECT id, name,email FROM users
+    SELECT id, name,email,tasks_per_week FROM users
     WHERE id =$1 `,
             [id]
         )
