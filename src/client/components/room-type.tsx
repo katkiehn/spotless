@@ -6,6 +6,7 @@ interface RoomTypeProps {
     value?: string;
     onNameChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     onTypeChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+    onDelete: () => void;
 }
 
 const RoomType = (props: RoomTypeProps) => {
@@ -24,7 +25,7 @@ const RoomType = (props: RoomTypeProps) => {
                 value={props.name}
                 onChange={props.onNameChange}
             />
-            <button>X</button>
+            <button onClick={props.onDelete}>X</button>
         </div>
     );
 };
