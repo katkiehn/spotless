@@ -67,3 +67,23 @@ module.exports.getUserById = (id) => {
             return result.rows[0];
         });
 };
+// ------------------------------------------------------------------------customise plan--------------------------------------
+
+module.exports.updateTaskCount = (taskCount, id) => {
+    return db.query(
+        `UPDATE users
+        SET   tasks_per_week= $1
+        WHERE id =$2`,
+        [taskCount, id]
+    );
+};
+
+module.exports.addRoom = (type, name, user_id) => {
+    return db.query(
+        `
+    INSERT INTO rooms(type,name, user_id)
+    VALUES($1,$2,$3)
+    `,
+        [type, name, user_id]
+    );
+};

@@ -101,6 +101,32 @@ app.get("/logout", (req, res) => {
     res.redirect("/login");
 });
 
+// ---------------------------------------------------------------------------customise plan--------------------------
+
+app.post("/api/plan", (req, res) => {
+    if (typeof req.session.userId === "undefined") {
+        res.status(401).json({
+            success: false,
+            error: "Please log in first.",
+        });
+        return;
+    }
+    const { rooms, taskCount } = req.body;
+    // each room is turned into a promise, which adds each single room to the database
+    Promise.all([
+        db.updateTaskCount(taskCount, req.session.userId),
+        ...rooms.map((r) => db.addRoom(r.type, r.name, req.session.userId)),
+    ])
+        .then(() => {
+            res.json({ success: true });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+            });
+        });
+});
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });

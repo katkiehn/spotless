@@ -1,9 +1,38 @@
 // this is the page where the user can customize how man rooms they have and how many tasks per week they want to do
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import RoomType from "../components/room-type";
 const NEW_ROOM = { type: "bedroom", name: "Bedroom" };
+
 const Plan = () => {
+    const history = useHistory();
     const [rooms, setRooms] = useState([NEW_ROOM]);
+    const [taskCount, setTaskCount] = useState(1);
+    const [error, setError] = useState("");
+
+    const handleSubmit = () => {
+        fetch("/api/plan", {
+            method: "post",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ rooms, taskCount }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    history.push("/");
+                    return;
+                }
+                setError(
+                    "Sorry, we couldn't customise your plan. please try again!"
+                );
+            })
+            .catch(() => {
+                setError(
+                    "Sorry, we couldn't customise your plan. please try again!"
+                );
+            });
+    };
+
     return (
         <div>
             <div>
@@ -11,6 +40,7 @@ const Plan = () => {
                 {rooms.map((room, index) => {
                     return (
                         <RoomType
+                            key={index + room.type}
                             name={room.name}
                             type={room.type}
                             onDelete={() => {
@@ -65,7 +95,13 @@ const Plan = () => {
                 <h1>How busy do you wanna be?</h1>
                 <div>
                     <label>Tasks per week</label>
-                    <select>
+                    <select
+                        value={taskCount}
+                        onChange={(e) =>
+                            // default is decimal aka 10, but better to be explicit
+                            setTaskCount(parseInt(e.target.value, 10))
+                        }
+                    >
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -73,8 +109,9 @@ const Plan = () => {
                         <option value="5">5</option>
                         <option value="6">6</option>
                     </select>
+                    {error && <p>{error}</p>}
                 </div>
-                <button>Save</button>
+                <button onClick={handleSubmit}>Save</button>
             </div>
         </div>
     );
