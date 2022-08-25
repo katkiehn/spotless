@@ -23,7 +23,7 @@ const Register = () => {
             .then((data) => {
                 if (data.success) {
                     // browser window function that refreshes the page
-                    location.reload();
+                    location.href = "/plan";
                     return;
                 }
                 setError(

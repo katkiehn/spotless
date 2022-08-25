@@ -5,6 +5,7 @@ import Homepage from "./views/homepage";
 import UserPage from "./views/user-page";
 import Register from "./views/register";
 import Login from "./views/login";
+import Plan from "./views/plan";
 
 // ---------------------------------------------------------------Routers----------------------
 const NotLoggedInRouter = () => {
@@ -31,6 +32,9 @@ const LoggedInRouter = () => {
             <BrowserRouter>
                 <Route exact path="/">
                     <UserPage />
+                </Route>
+                <Route exact path="/plan">
+                    <Plan />
                 </Route>
             </BrowserRouter>
         </>
