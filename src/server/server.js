@@ -6,6 +6,7 @@ const server = require("http").Server(app);
 const cookieSession = require("cookie-session");
 const db = require("./db");
 const config = require("./config");
+const { enrichRoomsWithTasks, getAllPossibleTasks } = require("./tasks");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -143,8 +144,16 @@ app.post("/api/tasks", (req, res) => {
     // select first X amount of tasks from list, where X= tasks per week as selected by user
     // insert X tasks into task table in database and return tasks as response
 
-    db.getRecentlyCompletedTasks(req.session.userId).then((tasks) => {
-        res.json({ tasks });
+    Promise.all([
+        db.getRecentlyCompletedTasks(req.session.userId),
+        db.getRoomsByUserId(req.session.userId),
+    ]).then(([completedTasks, rooms]) => {
+        //   function result becomes value of "room key"
+        res.json({
+            completedTasks,
+            rooms: enrichRoomsWithTasks(rooms),
+            possibleTasks: getAllPossibleTasks(rooms, completedTasks),
+        });
     });
 });
 

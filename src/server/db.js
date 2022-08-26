@@ -102,3 +102,15 @@ module.exports.getRecentlyCompletedTasks = (user_id) => {
             return result.rows;
         });
 };
+
+module.exports.getRoomsByUserId = (user_id) => {
+    return db
+        .query(
+            `SELECT * FROM rooms
+        WHERE user_id = $1`,
+            [user_id]
+        )
+        .then((result) => {
+            return result.rows;
+        });
+};
