@@ -36,13 +36,7 @@ const Plan = () => {
 
     return (
         <div>
-            <header>
-               <Link to ="">Blog</Link>
-                <Link to="/profile">My Profile</Link>
-                <h1>SPOTLESS</h1>
-                <Link to="/">My Tasks</Link>
-                <Link to="">LogOut</Link>
-            </header>
+         
             <div>
                 <h1>Rooms</h1>
                 {rooms.map((room, index) => {

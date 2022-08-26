@@ -10,12 +10,23 @@ import Benefits from "./views/potential-customer";
 import About from "./views/about";
 import Profile from "./views/profile";
 import Tasks from "./views/tasks";
+import { Link } from "react-router-dom";
 
 // ---------------------------------------------------------------Routers----------------------
 const NotLoggedInRouter = () => {
     return (
         <>
             <BrowserRouter>
+                <header>
+                    <Link to="/about">About</Link>
+                    <Link to="/benefits">Who is it for?</Link>
+                    <Link to="/">
+                        <h1>SPOTLESS</h1>
+                    </Link>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
+                </header>
+
                 <Route exact path="/">
                     <Homepage />
                 </Route>
@@ -41,8 +52,20 @@ const LoggedInRouter = () => {
     return (
         <>
             <BrowserRouter>
-                <Route exact path="/">
+                <header>
+                    <Link to="/tasks">My tasks</Link>
+                    <Link to="/plan">Customise my plan</Link>
+                    <Link to="/">
+                        <h1>SPOTLESS</h1>
+                    </Link>
+                    <Link to="/profile">Account</Link>
+                    <Link to="">Log Out</Link>
+                </header>
+                <Route exact path="/tasks">
                     <Tasks />
+                </Route>
+                <Route exact path="/">
+                    <Homepage />
                 </Route>
                 <Route exact path="/plan">
                     <Plan />
@@ -50,7 +73,6 @@ const LoggedInRouter = () => {
                 <Route exact path="/profile">
                     <Profile />
                 </Route>
-                
             </BrowserRouter>
         </>
     );

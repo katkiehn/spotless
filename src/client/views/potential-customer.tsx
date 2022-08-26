@@ -4,13 +4,7 @@ import { Link } from "react-router-dom";
 const Benefits = () => {
     return (
         <>
-            <header>
-                <Link to="/about">About</Link>
-                <Link to="/benefits">Who is it for?</Link>
-                <h1>SPOTLESS</h1>
-                <Link to="/login">Login</Link>
-                <Link to="/register">Register</Link>
-            </header>
+            
             <div className="benefit-wrapper">
                 <h1>How you can benefit from Spotless</h1>
                 <div className="benefit-category ">

@@ -22,7 +22,7 @@ const Login = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
-                    window.location.href = "/";
+                    window.location.href = "/tasks";
                     return;
                 }
                 setError(

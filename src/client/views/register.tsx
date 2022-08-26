@@ -34,13 +34,7 @@ const Register = () => {
 
     return (
         <>
-            <header>
-                <Link to="/about">About</Link>
-                <Link to="/benefits">Who is it for?</Link>
-                <h1>SPOTLESS</h1>
-                <Link to="/login">Login</Link>
-                <Link to="/">Home</Link>
-            </header>
+            
             <div className="register-wrapper">
                 <h2>
                     Get your personalised plan and become part of the Spotless

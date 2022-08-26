@@ -14,11 +14,13 @@ header {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
+    padding: 20px 0;
 }
 
 header h1 {
     color: #f7b733;
     font-size: 50px;
+    margin: 0;
 }
 h2 {
     text-align: center;
@@ -85,12 +87,10 @@ header a:hover {
     color: #ffffff;
 }
 
-/* .benefit-wrapper {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.benefit-wrapper {
+    max-width: 1000px;
     margin: 0 auto;
-} */
+}
 .benefit-wrapper h1 {
     text-align: center;
     color: #ffffff;

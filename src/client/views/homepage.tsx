@@ -7,13 +7,6 @@ const Homepage = () => {
     return (
         <>
             <div className="homepage-wrapper">
-                <header>
-                    <Link to="/about">About</Link>
-                    <Link to="/benefits">Who is it for?</Link>
-                    <h1>SPOTLESS</h1>
-                    <Link to="/login">Login</Link>
-                    <Link to="/register">Register</Link>
-                </header>
                 <div className="background-image"></div>
             </div>
             <h2>How we have helped people</h2>
