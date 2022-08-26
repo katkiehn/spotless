@@ -2,11 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter, Route } from "react-router-dom";
 import Homepage from "./views/homepage";
-import UserPage from "./views/user-page";
+import UserPage from "./views/tasks";
 import Register from "./views/register";
 import Login from "./views/login";
 import Plan from "./views/plan";
 import Benefits from "./views/potential-customer";
+import About from "./views/about";
+import Profile from "./views/profile";
+import Tasks from "./views/tasks";
 
 // ---------------------------------------------------------------Routers----------------------
 const NotLoggedInRouter = () => {
@@ -25,6 +28,10 @@ const NotLoggedInRouter = () => {
                 <Route exact path="/benefits">
                     <Benefits />
                 </Route>
+
+                <Route exact path="/about">
+                    <About />
+                </Route>
             </BrowserRouter>
         </>
     );
@@ -35,11 +42,15 @@ const LoggedInRouter = () => {
         <>
             <BrowserRouter>
                 <Route exact path="/">
-                    <UserPage />
+                    <Tasks />
                 </Route>
                 <Route exact path="/plan">
                     <Plan />
                 </Route>
+                <Route exact path="/profile">
+                    <Profile />
+                </Route>
+                
             </BrowserRouter>
         </>
     );

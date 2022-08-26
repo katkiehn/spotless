@@ -8,7 +8,7 @@ const Homepage = () => {
         <>
             <div className="homepage-wrapper">
                 <header>
-                    <Link to="">About</Link>
+                    <Link to="/about">About</Link>
                     <Link to="/benefits">Who is it for?</Link>
                     <h1>SPOTLESS</h1>
                     <Link to="/login">Login</Link>

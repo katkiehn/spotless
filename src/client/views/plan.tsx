@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { useHistory } from "react-router";
 import RoomType from "../components/room-type";
 const NEW_ROOM = { type: "bedroom", name: "Bedroom" };
+import { Link } from "react-router-dom";
 
 const Plan = () => {
     const history = useHistory();
@@ -35,6 +36,13 @@ const Plan = () => {
 
     return (
         <div>
+            <header>
+               <Link to ="">Blog</Link>
+                <Link to="/profile">My Profile</Link>
+                <h1>SPOTLESS</h1>
+                <Link to="/">My Tasks</Link>
+                <Link to="">LogOut</Link>
+            </header>
             <div>
                 <h1>Rooms</h1>
                 {rooms.map((room, index) => {

@@ -110,3 +110,13 @@ header a:hover {
     margin: 30px;
     width: 600px;
 }
+
+.login {
+    display: flex;
+    justify-content: space-around;
+    color: #ffffff;
+}
+
+.login img {
+    width: 400px;
+}
