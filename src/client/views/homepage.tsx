@@ -45,12 +45,19 @@ const Homepage = () => {
                 </div>
             </div>
             <h2>Cleaning Hacks</h2>
-            <h3>
-                Spotless wants you to spend less time on cleaning and have more
-                time for the fun stuff in life! Improve your cleaning with
-                throughly tested cleaning hacks by experts and other members of
-                our community.
-            </h3>
+            <div className="blog">
+                <h3>
+                    Spotless wants you to spend less time on cleaning and have
+                    more time for the fun stuff in life! Improve your cleaning
+                    with throughly tested cleaning hacks by experts and other
+                    members of our community.
+                </h3>
+                <div className="blog-post">
+                    <h4>Vinegar is life</h4>
+                    llllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                </div>
+            </div>
         </>
     );
 };

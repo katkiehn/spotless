@@ -17,14 +17,13 @@ header {
 }
 
 header h1 {
-    color: #fc4a1a;
-    font-size: 32px;
+    color: #f7b733;
+    font-size: 50px;
 }
 h2 {
     text-align: center;
     text-decoration: underline;
-    padding: 20px;
-    margin: 30px;
+    margin-top: 30px;
 }
 header a {
     text-decoration: none;
@@ -39,7 +38,9 @@ header a:hover {
 }
 
 .background-image {
-    background-image: url("https://img.freepik.com/free-vector/happy-family-cleaning-apartment_74855-6501.jpg?w=1480&t=st=1661502825~exp=1661503425~hmac=6112586e42861e4eac7d7b549a26589440447a13073b9957241bfd02e4b0b1af");
+    background-image: url("spotless-banner.svg");
+    background-repeat: no-repeat;
+    background-size: cover;
     height: 800px;
     width: 1500px;
     margin: auto;
@@ -59,5 +60,17 @@ header a:hover {
     padding: 20px;
     border: 5px solid black;
     border-radius: 10px;
+    background-color: #ffffff;
+    margin-bottom: 40px;
+}
+
+.blog {
+    width: 800px;
+    margin: auto;
+}
+.blog-post {
+    border: 2px solid black;
+    border-radius: 5px;
+    padding: 10px;
     background-color: #ffffff;
 }

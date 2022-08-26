@@ -87,3 +87,18 @@ module.exports.addRoom = (type, name, user_id) => {
         [type, name, user_id]
     );
 };
+
+//---------------------------------------------------------------------------tasks------------------------------------
+
+module.exports.getRecentlyCompletedTasks = (user_id) => {
+    return db
+        .query(
+            `SELECT * FROM tasks
+        WHERE user_id=$1
+         AND completed_at > NOW() - interval '3 months'`,
+            [user_id]
+        )
+        .then((result) => {
+            return result.rows;
+        });
+};

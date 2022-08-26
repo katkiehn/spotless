@@ -7,7 +7,6 @@ const cookieSession = require("cookie-session");
 const db = require("./db");
 const config = require("./config");
 
-
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env; // in prod the secrets are environment variables
@@ -23,11 +22,7 @@ const cookieSessionMiddleware = cookieSession({
 
 app.use(compression());
 app.use(express.json());
-app.use(
-    express.static(
-        path.join(__dirname, "..", "..", "build", "client", "public")
-    )
-);
+app.use(express.static(path.join(__dirname, "..", "..", "public")));
 app.use(cookieSessionMiddleware);
 
 app.get("/api/users/me", (req, res) => {
@@ -130,6 +125,29 @@ app.post("/api/plan", (req, res) => {
             });
         });
 });
+
+// ---------------------------------------------------------------------------assign tasks-------------------------------
+
+app.post("/api/tasks", (req, res) => {
+    if (typeof req.session.userId === "undefined") {
+        res.status(401).json({
+            success: false,
+            error: "Please log in first.",
+        });
+        return;
+    }
+    // algorithm to randomise and assign tasks:
+    // fetch users tasks for the last 3 months
+    // group all tasks based on rooms, check if tasks have been completed already, if so deduct each completion from the frequency number,
+    // sort tasks based on remaining frequency
+    // select first X amount of tasks from list, where X= tasks per week as selected by user
+    // insert X tasks into task table in database and return tasks as response
+
+    db.getRecentlyCompletedTasks(req.session.userId).then((tasks) => {
+        res.json({ tasks });
+    });
+});
+
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
