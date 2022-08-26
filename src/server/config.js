@@ -105,3 +105,4 @@ const ROOM_TYPES = [
         ],
     },
 ];
+module.exports = { ROOM_TYPES };

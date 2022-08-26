@@ -6,7 +6,7 @@
  */
 
 body {
-    /* background-image: url("https://media.istockphoto.com/vectors/cleaning-vector-illustration-concept-professional-hygiene-service-for-vector-id1339147706?b=1&k=20&m=1339147706&s=612x612&w=0&h=hIRtvGMv_oYIhQ-Zk0kfSXbng8bjLdUGouS3AxPbcOM="); */
+    font-family: "Lora", serif;
     background-color: #4abdac;
 }
 
@@ -14,18 +14,50 @@ header {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
-    border: 2px solid #dfdce3;
-    width: 100%;
-    background-color: #ffffff;
-    margin: 0 auto;
 }
 
-h1 {
+header h1 {
     color: #fc4a1a;
-    font-weight: bold;
+    font-size: 32px;
 }
-a {
-    color: #dfdce3;
+h2 {
+    text-align: center;
+    text-decoration: underline;
+    padding: 20px;
+    margin: 30px;
+}
+header a {
     text-decoration: none;
-    color: #777;
+    color: #ffffff;
+    font-family: "Lora", serif;
+    font-size: 24px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 3px;
+}
+header a:hover {
+    border-bottom: 1px solid #ffffff;
+}
+
+.background-image {
+    background-image: url("https://img.freepik.com/free-vector/happy-family-cleaning-apartment_74855-6501.jpg?w=1480&t=st=1661502825~exp=1661503425~hmac=6112586e42861e4eac7d7b549a26589440447a13073b9957241bfd02e4b0b1af");
+    height: 800px;
+    width: 1500px;
+    margin: auto;
+}
+.homepage-wrapper {
+    background-color: #4abdac;
+    padding-bottom: 50px;
+    margin-bottom: 50px;
+}
+
+.review-wrapper {
+    display: flex;
+    justify-content: space-around;
+}
+.reviews {
+    width: 300px;
+    padding: 20px;
+    border: 5px solid black;
+    border-radius: 10px;
+    background-color: #ffffff;
 }

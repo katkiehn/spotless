@@ -5,6 +5,9 @@ const path = require("path");
 const server = require("http").Server(app);
 const cookieSession = require("cookie-session");
 const db = require("./db");
+const config = require("./config");
+
+
 let secrets;
 if (process.env.NODE_ENV == "production") {
     secrets = process.env; // in prod the secrets are environment variables
