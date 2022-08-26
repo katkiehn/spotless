@@ -1,17 +1,18 @@
 // this is the homepage before we register or login
 
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Homepage = () => {
     return (
         <>
             <div className="homepage-wrapper">
                 <header>
-                    <a href="">About</a>
-                    <a href="">Who is it for?</a>
+                    <Link to="">About</Link>
+                    <Link to="/benefits">Who is it for?</Link>
                     <h1>SPOTLESS</h1>
-                    <a href="/login">Login</a>
-                    <a href="">Register</a>
+                    <Link to="/login">Login</Link>
+                    <Link to="/register">Register</Link>
                 </header>
                 <div className="background-image"></div>
             </div>
@@ -46,16 +47,40 @@ const Homepage = () => {
             </div>
             <h2>Cleaning Hacks</h2>
             <div className="blog">
-                <h3>
+                <div className="blog-paragraph">
                     Spotless wants you to spend less time on cleaning and have
                     more time for the fun stuff in life! Improve your cleaning
                     with throughly tested cleaning hacks by experts and other
                     members of our community.
-                </h3>
+                </div>
                 <div className="blog-post">
                     <h4>Vinegar is life</h4>
-                    llllllllllllllllllllllllllllllllllllaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
-                    aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaakkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+                    Cleaning vinegar is a natural ingredient that can be used to
+                    clean many items and surfaces around the house. While there
+                    are many types of vinegar used for cooking and salad
+                    dressings (red, white, champagne, balsamic, rice, apple
+                    cider, to name a few), cleaning vinegar is an entirely
+                    different product that's made specifically for household
+                    cleaning and should never be consumed. If you would like to
+                    move away from commercial cleaning products filled with
+                    chemicals, then consider this as an alternative. Here's
+                    everything you need to know about cleaning vinegar and how
+                    to use it all over the house—plus a few items you should
+                    never clean with vinegar.
+                </div>
+                <div className="blog-post">
+                    <h4>
+                        Mix baking soda, citric acid, and a little bit of dish
+                        soap together to clean your toilets by just dropping in
+                        a little pod.
+                    </h4>
+                    cup of baking soda + 1/4 cup of citric acid + 1 tablespoon
+                    dish soap = easy toilet fizzies. Just mix everything
+                    together and press into an ice cube tray, or get the full
+                    tutorial from Nifty. Or you could opt for a toilet cleaner
+                    that Whole Foods qualifies as "green" on their Eco-Scale,
+                    based on its ingredients and it comes in a recyclable
+                    bottle.
                 </div>
             </div>
         </>

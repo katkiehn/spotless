@@ -24,6 +24,11 @@ h2 {
     text-align: center;
     text-decoration: underline;
     margin-top: 30px;
+    color: #ffffff;
+}
+
+h4 {
+    margin: 0;
 }
 header a {
     text-decoration: none;
@@ -58,7 +63,7 @@ header a:hover {
 .reviews {
     width: 300px;
     padding: 20px;
-    border: 5px solid black;
+    border: 5px solid #f7b733;
     border-radius: 10px;
     background-color: #ffffff;
     margin-bottom: 40px;
@@ -69,8 +74,39 @@ header a:hover {
     margin: auto;
 }
 .blog-post {
-    border: 2px solid black;
+    border: 2px solid #f7b733;
     border-radius: 5px;
     padding: 10px;
     background-color: #ffffff;
+    margin: 30px auto;
+}
+.blog-paragraph {
+    padding: 20px;
+    color: #ffffff;
+}
+
+/* .benefit-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 auto;
+} */
+.benefit-wrapper h1 {
+    text-align: center;
+    color: #ffffff;
+    padding: 30px;
+}
+
+.benefit-category {
+    display: flex;
+    width: 60vw;
+    height: 50vh;
+}
+
+.benefit-img {
+    width: 400px;
+}
+.benefit-text {
+    margin: 30px;
+    width: 600px;
 }

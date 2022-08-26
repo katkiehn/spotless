@@ -6,6 +6,7 @@ import UserPage from "./views/user-page";
 import Register from "./views/register";
 import Login from "./views/login";
 import Plan from "./views/plan";
+import Benefits from "./views/potential-customer";
 
 // ---------------------------------------------------------------Routers----------------------
 const NotLoggedInRouter = () => {
@@ -20,6 +21,9 @@ const NotLoggedInRouter = () => {
                 </Route>
                 <Route exact path="/login">
                     <Login />
+                </Route>
+                <Route exact path="/benefits">
+                    <Benefits />
                 </Route>
             </BrowserRouter>
         </>
