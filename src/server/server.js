@@ -137,24 +137,40 @@ app.post("/api/tasks", (req, res) => {
         });
         return;
     }
+
     // algorithm to randomise and assign tasks:
     // fetch users tasks for the last 3 months
     // group all tasks based on rooms, check if tasks have been completed already, if so deduct each completion from the frequency number,
     // sort tasks based on remaining frequency
     // select first X amount of tasks from list, where X= tasks per week as selected by user
     // insert X tasks into task table in database and return tasks as response
-
     Promise.all([
         db.getRecentlyCompletedTasks(req.session.userId),
         db.getRoomsByUserId(req.session.userId),
-    ]).then(([completedTasks, rooms]) => {
-        //   function result becomes value of "room key"
-        res.json({
-            completedTasks,
-            rooms: enrichRoomsWithTasks(rooms),
-            possibleTasks: getAllPossibleTasks(rooms, completedTasks),
+        db.getUserById(req.session.userId),
+    ])
+        .then(([completedTasks, rooms, user]) => {
+            //   updatedTaskFrequency will need to be updated in database
+            const updatedTaskFrequencyArr = getAllPossibleTasks(
+                rooms,
+                completedTasks
+            );
+            const number = user.tasks_per_week;
+            const tasksToAdd = updatedTaskFrequencyArr.slice(0, number);
+            return Promise.all(
+                tasksToAdd.map((task) => {
+                    return db.addTask(
+                        req.session.userId,
+                        task.type,
+                        task.description,
+                        task.room_id
+                    );
+                })
+            );
+        })
+        .then((tasks) => {
+            res.json({ tasks });
         });
-    });
 });
 
 app.get("*", function (req, res) {

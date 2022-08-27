@@ -17,10 +17,12 @@ const getTasksByRoomType = (type) => {
     // optional chaining
     return roomType?.tasks || [];
 };
-
+// type here refers to the task type
 const findMatchingTasks = (type, room_id, completedTasks) => {
     return completedTasks.filter(
-        (task) => type === task.type && room_id === task.room_id
+        //
+        (completedTask) =>
+            type === completedTask.type && room_id === completedTask.room_id
     );
 };
 

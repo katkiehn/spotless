@@ -114,3 +114,17 @@ module.exports.getRoomsByUserId = (user_id) => {
             return result.rows;
         });
 };
+
+module.exports.addTask = (user_id, type, description, room_id) => {
+    return db
+        .query(
+            `
+    INSERT INTO tasks (user_id, type, description, room_id)
+    VALUES($1,$2,$3,$4)
+    RETURNING *`,
+            [user_id, type, description, room_id]
+        )
+        .then((result) => {
+            return result.rows[0];
+        });
+};
