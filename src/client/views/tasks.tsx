@@ -5,6 +5,37 @@ import { Link } from "react-router-dom";
 import { Task } from "../types";
 const Tasks = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
+    const [error, setError] = useState("");
+
+    const updateTask = (task: Task) => {
+        // if completed at is truthy, updating it means "incompleting" it, otherwise the onchange will mark it as completed
+        const endpoint = task.completed_at
+            ? "/api/tasks/incompleted"
+            : "/api/tasks/completed";
+
+        fetch(endpoint, {
+            method: "post",
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify({ task_id: task.task_id }),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    setTasks((existingTasks) =>
+                        existingTasks.map((existingTask) => {
+                            if (existingTask.task_id === data.task.task_id) {
+                                return data.task;
+                            }
+                            return existingTask;
+                        })
+                    );
+                    return;
+                }
+                setError(
+                    "Sorry, we were unable to complete the task. Please try again!"
+                );
+            });
+    };
 
     useEffect(() => {
         fetch("/api/tasks/weekly")
@@ -26,8 +57,16 @@ const Tasks = () => {
                 {tasks.map((task) => {
                     return (
                         <div className="task" key={task.task_id}>
-                            <input type="checkbox"></input>
-                            <label className="task-tick">
+                            <input
+                                type="checkbox"
+                                defaultChecked={!!task.completed_at}
+                                id={`task-${task.task_id}`}
+                                onChange={() => updateTask(task)}
+                            />
+                            <label
+                                className="task-tick"
+                                htmlFor={`task-${task.task_id}`}
+                            >
                                 {task.description}
                             </label>
                         </div>

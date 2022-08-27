@@ -135,10 +135,41 @@ module.exports.getWeeklyTasks = (user_id) => {
             `
     SELECT * FROM tasks
     WHERE user_id=$1
-    AND created_at > NOW() - interval '7 days'`,
+    AND created_at > NOW() - interval '7 days'
+    ORDER BY task_id`,
             [user_id]
         )
         .then((result) => {
             return result.rows;
+        });
+};
+
+module.exports.completeTask = (task_id) => {
+    return db
+        .query(
+            `
+    UPDATE tasks
+    SET completed_at = NOW()
+    WHERE task_id =$1
+    RETURNING * `,
+            [task_id]
+        )
+        .then((result) => {
+            return result.rows[0];
+        });
+};
+
+module.exports.incompleteTask = (task_id) => {
+    return db
+        .query(
+            `
+    UPDATE tasks
+    SET completed_at = NULL
+    WHERE task_id =$1
+    RETURNING * `,
+            [task_id]
+        )
+        .then((result) => {
+            return result.rows[0];
         });
 };

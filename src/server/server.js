@@ -185,6 +185,33 @@ app.get("/api/tasks/weekly", (req, res) => {
         res.json({ tasks });
     });
 });
+// --------------------------------------------------------------------------------------------complete tasks-----------------------
+
+app.post("/api/tasks/completed", (req, res) => {
+    db.completeTask(req.body.task_id)
+        .then((task) => {
+            res.json({ success: true, task });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+            });
+        });
+});
+
+app.post("/api/tasks/incompleted", (req, res) => {
+    db.incompleteTask(req.body.task_id)
+        .then((task) => {
+            res.json({ success: true, task });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+            });
+        });
+});
 
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
