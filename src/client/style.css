@@ -225,3 +225,23 @@ header a:hover {
     font-size: 16px;
     margin-left: 15px;
 }
+.about-wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.about {
+    max-width: 800px;
+    margin: 30px 40px;
+    color: #ffffff;
+}
+.about p {
+    font-size: 20px;
+    line-height: 30px;
+}
+.about-img {
+    display: flex;
+    flex-direction: row-reverse;
+}
+.about-img img {
+    max-width: 400px;
+}
