@@ -14,16 +14,17 @@ const About = () => {
                     thing. And our motivation to do anything beyond the most
                     urgent tasks evaporated.
                     <br />
-                    But they needed attention too. We neither wanted to spend
-                    our valuable brain power on coming up with which less
-                    urgent, but still necessary tasks to tackle when, nor did we
-                    want to tell each other what to do as this always led to
-                    arguments. So we programmed a system to do that part for us.
+                    Unfortunately, they need attention too. But we neither
+                    wanted to spend our valuable brain power on coming up with
+                    which - less urgent, but still necessary - tasks to tackle
+                    when, nor did we want to tell each other what to do as this
+                    always led to arguments. So we programmed a system to do
+                    that part for us.
                     <br />
                     It worked so well for us that we wanted to share it with the
-                    world. Try it for free and let us know how you like it and
-                    what we could improve. Make sure to check our blog with
-                    helpful cleaning hacks!
+                    world. Try it for free, let us know how you like it and what
+                    we can improve. Make sure to check our blog with helpful
+                    cleaning hacks!
                 </p>
             </div>
             <div className="about-img">

@@ -14,7 +14,7 @@ const Homepage = () => {
             <h2>How we have helped people</h2>
             <div className="review-wrapper">
                 <div className="reviews">
-                    <p>⭐⭐⭐⭐ Such a life saver!</p>
+                    <p>⭐⭐⭐⭐⭐ Such a life saver!</p>
                     <p>
                         Spotless has made my life so much easier. One thing less
                         I have to manage in my busy life. And I love their
@@ -22,7 +22,7 @@ const Homepage = () => {
                     </p>
                 </div>
                 <div className="reviews">
-                    <p>⭐⭐⭐ Better than being told off by your partner!</p>
+                    <p>⭐⭐⭐⭐ Better than being told off by your partner!</p>
                     <p>
                         I am still not a fan of cleaning, but I prefer to have
                         an app tell me what to do.Since using Spotless, my
