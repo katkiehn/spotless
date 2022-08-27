@@ -99,8 +99,16 @@ header a:hover {
 
 .benefit-category {
     display: flex;
+    align-items: center;
     width: 60vw;
-    height: 50vh;
+
+    color: #ffffff;
+    font-size: 20px;
+    line-height: 1.5;
+    margin-bottom: 60px;
+}
+.benefit-category h4 {
+    font-size: 24px;
 }
 
 .benefit-img {
@@ -119,4 +127,28 @@ header a:hover {
 
 .login img {
     width: 400px;
+}
+
+.all-tasks {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 40px 0;
+}
+.task {
+    font-size: 24px;
+}
+
+.task-photo {
+    display: flex;
+    justify-content: center;
+}
+
+.diagram {
+    display: flex;
+    justify-content: center;
+}
+
+.diagram-img {
+    width: 600px;
 }

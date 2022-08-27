@@ -53,12 +53,12 @@ const LoggedInRouter = () => {
         <>
             <BrowserRouter>
                 <header>
-                    <Link to="/tasks">My tasks</Link>
-                    <Link to="/plan">Customise my plan</Link>
+                    <Link to="/tasks">My Tasks</Link>
+                    <Link to="/plan">Customise my Plan</Link>
                     <Link to="/">
                         <h1>SPOTLESS</h1>
                     </Link>
-                    <Link to="/profile">Account</Link>
+                    <Link to="/profile"> My Account</Link>
                     <Link to="">Log Out</Link>
                 </header>
                 <Route exact path="/tasks">
