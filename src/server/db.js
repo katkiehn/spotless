@@ -173,3 +173,59 @@ module.exports.incompleteTask = (task_id) => {
             return result.rows[0];
         });
 };
+
+// ----------------------------------------------------------------------------------------reset password-----------------------------
+
+module.exports.verifyUserByEmail = (email) => {
+    return db
+        .query("SELECT * FROM users where email = $1", [email])
+        .then((result) => {
+            // will be true if there are nor rows
+            if (!result.rows.length) {
+                throw new Error(
+                    "No user with this email exists. Please register!"
+                );
+            }
+            return result.rows[0].email;
+        });
+};
+
+module.exports.addCodeToUser = (email, code) => {
+    return db.query(
+        `INSERT INTO reset_codes(email,code)
+        VALUES ($1, $2) 
+        RETURNING * `,
+        [email, code]
+    );
+};
+
+module.exports.getEmailByResetCode = (code) => {
+    return db
+        .query(
+            `SELECT email FROM reset_codes
+    WHERE CURRENT_TIMESTAMP - created_at < INTERVAL '10 minutes'
+    AND code = $1
+     `,
+            [code]
+        )
+        .then((result) => {
+            // will be true if there are nor rows
+            if (!result.rows.length) {
+                throw new Error(
+                    "Your code is invalid or expired!Please rquest a new code."
+                );
+            }
+            return result.rows[0].email;
+        });
+};
+
+module.exports.updatePasswordByEmail = (password, email) => {
+    return hash(password).then((password_hash) => {
+        return db.query(
+            `UPDATE users
+                SET password_hash= $1
+                WHERE email=$2`,
+            [password_hash, email]
+        );
+    });
+};

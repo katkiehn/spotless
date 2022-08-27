@@ -152,3 +152,9 @@ header a:hover {
 .diagram-img {
     width: 600px;
 }
+
+.not-found {
+    width: 800px;
+    margin: 0 auto;
+    display: block;
+}

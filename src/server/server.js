@@ -7,6 +7,8 @@ const cookieSession = require("cookie-session");
 const db = require("./db");
 const config = require("./config");
 const { enrichRoomsWithTasks, getAllPossibleTasks } = require("./tasks");
+const aws = require("aws-sdk");
+const cryptoRandomString = require("crypto-random-string");
 
 let secrets;
 if (process.env.NODE_ENV == "production") {
@@ -14,6 +16,13 @@ if (process.env.NODE_ENV == "production") {
 } else {
     secrets = require("../../secrets"); // in dev they are in secrets.json which is listed in .gitignore
 }
+
+const ses = new aws.SES({
+    accessKeyId: secrets.AWS_KEY,
+    secretAccessKey: secrets.AWS_SECRET,
+    region: "eu-central-1", // Make sure this corresponds to the region in which you have verified your email address (or 'eu-west-1' if you are using the Spiced credentials)
+});
+
 const cookieSessionMiddleware = cookieSession({
     //random string input for secret; the longer the better(normally shouldnt be in a public place like github)
     secret: secrets.SESSION_SECRET,
@@ -97,7 +106,7 @@ app.post("/api/login", (req, res) => {
 
 app.get("/logout", (req, res) => {
     req.session.userId = undefined;
-    res.redirect("/login");
+    res.redirect("/");
 });
 
 // ---------------------------------------------------------------------------customise plan--------------------------
@@ -204,6 +213,70 @@ app.post("/api/tasks/incompleted", (req, res) => {
     db.incompleteTask(req.body.task_id)
         .then((task) => {
             res.json({ success: true, task });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+            });
+        });
+});
+
+// -------------------------------------------------------------------------------reset password-----------------------------------
+
+app.post("/api/reset-password", (req, res) => {
+    const { email } = req.body;
+    const secretCode = cryptoRandomString({
+        length: 6,
+    });
+    db.verifyUserByEmail(email)
+        .then((email) => {
+            return db.addCodeToUser(email, secretCode);
+        })
+        .then(() => {
+            return ses
+                .sendEmail({
+                    Source: "Coffeenados <katha.kiehn@gmail.com>",
+                    Destination: {
+                        ToAddresses: [email],
+                    },
+                    Message: {
+                        Body: {
+                            Text: {
+                                Data: `Please enter this code ${secretCode} on our webpage!`,
+                            },
+                        },
+                        Subject: {
+                            Data: "Reset Password",
+                        },
+                    },
+                })
+                .promise();
+        })
+        .then(() => {
+            res.json({
+                success: true,
+            });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+            });
+        });
+});
+
+app.post("/api/secret-code", (req, res) => {
+    const { code, password } = req.body;
+
+    db.getEmailByResetCode(code)
+        .then((email) => {
+            return db.updatePasswordByEmail(password, email);
+        })
+        .then(() => {
+            res.json({
+                success: true,
+            });
         })
         .catch((err) => {
             res.status(500).json({

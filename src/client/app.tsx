@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Homepage from "./views/homepage";
 import UserPage from "./views/tasks";
 import Register from "./views/register";
@@ -11,6 +11,8 @@ import About from "./views/about";
 import Profile from "./views/profile";
 import Tasks from "./views/tasks";
 import { Link } from "react-router-dom";
+import ResetPassword from "./components/reset-password";
+import PageNotFound from "./views/page-not-found";
 
 // ---------------------------------------------------------------Routers----------------------
 const NotLoggedInRouter = () => {
@@ -26,23 +28,32 @@ const NotLoggedInRouter = () => {
                     <Link to="/login">Login</Link>
                     <Link to="/register">Register</Link>
                 </header>
-
-                <Route exact path="/">
-                    <Homepage />
-                </Route>
-                <Route exact path="/register">
-                    <Register />
-                </Route>
-                <Route exact path="/login">
-                    <Login />
-                </Route>
-                <Route exact path="/benefits">
-                    <Benefits />
-                </Route>
-
-                <Route exact path="/about">
-                    <About />
-                </Route>
+                <Switch>
+                    <Route exact path="/">
+                        <Homepage />
+                    </Route>
+                    <Route exact path="/register">
+                        <Register />
+                    </Route>
+                    <Route exact path="/login">
+                        <Login />
+                    </Route>
+                    <Route exact path="/benefits">
+                        <Benefits />
+                    </Route>
+                    <Route exact path="/about">
+                        <About />
+                    </Route>
+                    <Route path="/reset-password">
+                        <ResetPassword />
+                    </Route>
+                    <Route exact path="/tasks">
+                        <Redirect to="/login" />
+                    </Route>
+                    <Route path="*">
+                        <PageNotFound />
+                    </Route>
+                </Switch>
             </BrowserRouter>
         </>
     );
@@ -59,20 +70,25 @@ const LoggedInRouter = () => {
                         <h1>SPOTLESS</h1>
                     </Link>
                     <Link to="/profile"> My Account</Link>
-                    <Link to="">Log Out</Link>
+                    <a href="/logout">Log Out</a>
                 </header>
-                <Route exact path="/tasks">
-                    <Tasks />
-                </Route>
-                <Route exact path="/">
-                    <Homepage />
-                </Route>
-                <Route exact path="/plan">
-                    <Plan />
-                </Route>
-                <Route exact path="/profile">
-                    <Profile />
-                </Route>
+                <Switch>
+                    <Route exact path="/tasks">
+                        <Tasks />
+                    </Route>
+                    <Route exact path="/">
+                        <Homepage />
+                    </Route>
+                    <Route exact path="/plan">
+                        <Plan />
+                    </Route>
+                    <Route exact path="/profile">
+                        <Profile />
+                    </Route>
+                    <Route path="*">
+                        <PageNotFound />
+                    </Route>
+                </Switch>
             </BrowserRouter>
         </>
     );

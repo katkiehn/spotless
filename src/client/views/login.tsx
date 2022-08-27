@@ -33,13 +33,6 @@ const Login = () => {
 
     return (
         <>
-            <header>
-                <Link to="/about">About</Link>
-                <Link to="/benefits">Who is it for?</Link>
-                <h1>SPOTLESS</h1>
-                <Link to="/register">Register</Link>
-                <Link to="/">Home</Link>
-            </header>
             <div className="login-wrapper">
                 <h2>Hello there! Nice to see you again.</h2>
                 <div className="login">
@@ -73,7 +66,8 @@ const Login = () => {
                             <input type="submit" value="Login"></input>
                         </div>
                         <p>
-                            Not a member just yet? <a href="/">Sign up!</a>
+                            Not a member just yet?{" "}
+                            <a href="/register">Sign up!</a>
                         </p>
                         <p>
                             Forgotten your password?{" "}

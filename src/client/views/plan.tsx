@@ -36,7 +36,6 @@ const Plan = () => {
 
     return (
         <div>
-         
             <div>
                 <h1>Rooms</h1>
                 {rooms.map((room, index) => {
