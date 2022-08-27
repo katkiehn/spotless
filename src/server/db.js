@@ -128,3 +128,17 @@ module.exports.addTask = (user_id, type, description, room_id) => {
             return result.rows[0];
         });
 };
+
+module.exports.getWeeklyTasks = (user_id) => {
+    return db
+        .query(
+            `
+    SELECT * FROM tasks
+    WHERE user_id=$1
+    AND created_at > NOW() - interval '7 days'`,
+            [user_id]
+        )
+        .then((result) => {
+            return result.rows;
+        });
+};

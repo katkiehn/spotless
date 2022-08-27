@@ -173,6 +173,19 @@ app.post("/api/tasks", (req, res) => {
         });
 });
 
+app.get("/api/tasks/weekly", (req, res) => {
+    if (typeof req.session.userId === "undefined") {
+        res.status(401).json({
+            success: false,
+            error: "Please log in first.",
+        });
+        return;
+    }
+    db.getWeeklyTasks(req.session.userId).then((tasks) => {
+        res.json({ tasks });
+    });
+});
+
 app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });

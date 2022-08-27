@@ -1,9 +1,18 @@
 // this page shows user's weekly tasks and progress
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-
+import { Task } from "../types";
 const Tasks = () => {
+    const [tasks, setTasks] = useState<Task[]>([]);
+
+    useEffect(() => {
+        fetch("/api/tasks/weekly")
+            .then((res) => res.json())
+            .then((data) => {
+                setTasks(data.tasks);
+            });
+    }, []);
     return (
         <>
             <div className="task-photo">
@@ -14,18 +23,16 @@ const Tasks = () => {
             </div>
             <h2>My weekly tasks</h2>
             <div className="all-tasks">
-                <div className="task">
-                    <input type="checkbox"></input>
-                    <label className="task-tick"> Task1 </label>
-                </div>
-                <div className="task">
-                    <input type="checkbox"></input>
-                    <label className="task-tick"> Task1 </label>
-                </div>
-                <div className="task">
-                    <input type="checkbox"></input>
-                    <label className="task-tick"> Task1 </label>
-                </div>
+                {tasks.map((task) => {
+                    return (
+                        <div className="task" key={task.task_id}>
+                            <input type="checkbox"></input>
+                            <label className="task-tick">
+                                {task.description}
+                            </label>
+                        </div>
+                    );
+                })}
             </div>
             <h2>My progress</h2>
             <div className="diagram">
