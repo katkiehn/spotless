@@ -196,15 +196,35 @@ app.post("/api/tasks", (req, res) => {
         db.getRecentlyCompletedTasks(req.session.userId),
         db.getRoomsByUserId(req.session.userId),
         db.getUserById(req.session.userId),
+        db.getWeeklyTasks(req.session.userId),
     ])
-        .then(([completedTasks, rooms, user]) => {
+        .then(([completedTasks, rooms, user, assignedTasks]) => {
             //   updatedTaskFrequency will need to be updated in database
             const updatedTaskFrequencyArr = getAllPossibleTasks(
                 rooms,
                 completedTasks
             );
-            const number = user.tasks_per_week;
-            const tasksToAdd = updatedTaskFrequencyArr.slice(0, number);
+            // to make sure we don't double assign a task in one week, even if we update our rooms/tasks
+            const noRepetitiveTasks = updatedTaskFrequencyArr.filter(
+                (possibleTask) => {
+                    // we compare every item in the assignedTask array with the possible task in our filter function
+                    // if they are not the same, we return truthy, meaning we keep the possible task
+                    // if they are the same, we return falsey and throw it out
+                    return !assignedTasks.find((assignedTask) => {
+                        return (
+                            assignedTask.type === possibleTask.type &&
+                            assignedTask.room_id === possibleTask.room_id
+                        );
+                    });
+                }
+            );
+            //  only take tasks from UI which are not completed yet
+            const outstandingTasks = assignedTasks.filter(
+                (task) => !task.completed_at
+            );
+            //  to make sure we only add the amount of tasks that are missing to have the full amount of tasks per week as chosen by user
+            const number = user.tasks_per_week - outstandingTasks.length;
+            const tasksToAdd = noRepetitiveTasks.slice(0, number);
             return Promise.all(
                 tasksToAdd.map((task) => {
                     return db.addTask(

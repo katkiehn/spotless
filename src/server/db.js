@@ -156,6 +156,7 @@ module.exports.getWeeklyTasks = (user_id) => {
     SELECT * FROM tasks
     WHERE user_id=$1
     AND created_at > NOW() - interval '7 days'
+    AND completed_at is NULL
     ORDER BY task_id`,
             [user_id]
         )
