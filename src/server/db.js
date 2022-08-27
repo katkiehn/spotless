@@ -88,6 +88,38 @@ module.exports.addRoom = (type, name, user_id) => {
     );
 };
 
+module.exports.deleteRoom = (room_id) => {
+    return db.query(
+        `
+        DELETE FROM rooms
+        WHERE room_id=$1
+        `,
+        [room_id]
+    );
+};
+
+module.exports.updateRoom = (room) => {
+    return db.query(
+        `
+        UPDATE rooms
+        SET type = $1, name=$2
+        WHERE room_id=$3
+         `,
+        [room.type, room.name, room.room_id]
+    );
+};
+module.exports.getRoomsByUserId = (user_id) => {
+    return db
+        .query(
+            `SELECT * FROM rooms
+        WHERE user_id = $1
+        ORDER BY room_id`,
+            [user_id]
+        )
+        .then((result) => {
+            return result.rows;
+        });
+};
 //---------------------------------------------------------------------------tasks------------------------------------
 
 module.exports.getRecentlyCompletedTasks = (user_id) => {
@@ -96,18 +128,6 @@ module.exports.getRecentlyCompletedTasks = (user_id) => {
             `SELECT * FROM tasks
         WHERE user_id=$1
          AND completed_at > NOW() - interval '3 months'`,
-            [user_id]
-        )
-        .then((result) => {
-            return result.rows;
-        });
-};
-
-module.exports.getRoomsByUserId = (user_id) => {
-    return db
-        .query(
-            `SELECT * FROM rooms
-        WHERE user_id = $1`,
             [user_id]
         )
         .then((result) => {

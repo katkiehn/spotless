@@ -120,13 +120,52 @@ app.post("/api/plan", (req, res) => {
         return;
     }
     const { rooms, taskCount } = req.body;
-    // each room is turned into a promise, which adds each single room to the database
-    Promise.all([
-        db.updateTaskCount(taskCount, req.session.userId),
-        ...rooms.map((r) => db.addRoom(r.type, r.name, req.session.userId)),
-    ])
+
+    db.getRoomsByUserId(req.session.userId)
+        .then((existingRooms) => {
+            //  need to figure out whether room needs to be deleted, inserted or updated
+            const roomsToAdd = rooms.filter((room) => !room.room_id);
+            const roomsToUpdate = rooms.filter((room) => room.room_id);
+            const roomsToDelete = existingRooms.filter((existingRoom) => {
+                // if we don't find a room in the payload given to us by the client, we can delete the room
+                return !rooms.find(
+                    (room) => room.room_id === existingRoom.room_id
+                );
+            });
+
+            // each room is turned into a promise, which adds each single room to the database
+            return Promise.all([
+                db.updateTaskCount(taskCount, req.session.userId),
+                ...roomsToAdd.map((r) =>
+                    db.addRoom(r.type, r.name, req.session.userId)
+                ),
+                ...roomsToUpdate.map((r) => db.updateRoom(r)),
+                ...roomsToDelete.map((r) => db.deleteRoom(r.room_id)),
+            ]);
+        })
         .then(() => {
             res.json({ success: true });
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+            });
+        });
+});
+
+app.get("/api/plan/rooms", (req, res) => {
+    if (typeof req.session.userId === "undefined") {
+        res.status(401).json({
+            success: false,
+            error: "Please log in first.",
+        });
+        return;
+    }
+
+    db.getRoomsByUserId(req.session.userId)
+        .then((rooms) => {
+            res.json({ rooms, success: true });
         })
         .catch((err) => {
             res.status(500).json({
@@ -178,7 +217,7 @@ app.post("/api/tasks", (req, res) => {
             );
         })
         .then((tasks) => {
-            res.json({ tasks });
+            res.json({ success: true, tasks });
         });
 });
 

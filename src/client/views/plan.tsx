@@ -1,5 +1,5 @@
 // this is the page where the user can customize how man rooms they have and how many tasks per week they want to do
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router";
 import RoomType from "../components/room-type";
 const NEW_ROOM = { type: "bedroom", name: "Bedroom" };
@@ -11,6 +11,14 @@ const Plan = () => {
     const [taskCount, setTaskCount] = useState(1);
     const [error, setError] = useState("");
 
+    useEffect(() => {
+        fetch("/api/plan/rooms")
+            .then((res) => res.json())
+            .then((data) => {
+                setRooms(data.rooms);
+            });
+    }, []);
+
     const handleSubmit = () => {
         fetch("/api/plan", {
             method: "post",
@@ -20,7 +28,7 @@ const Plan = () => {
             .then((res) => res.json())
             .then((data) => {
                 if (data.success) {
-                    history.push("/");
+                    history.push("/tasks");
                     return;
                 }
                 setError(

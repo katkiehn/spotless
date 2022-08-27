@@ -45,6 +45,8 @@ const getAllPossibleTasks = (rooms, completedTasks) => {
                 ...task,
                 room_id: room.room_id,
                 frequency_per_quarter,
+                // description as a function as defined in our config.js
+                description: task.description(room.name),
             });
         }
     }

@@ -5,22 +5,25 @@ const ROOM_TYPES = [
         tasks: [
             {
                 type: "clean_fridge",
-                description: "Clean the fridge",
+                description: (roomName) =>
+                    `Clean the fridge in the ${roomName}`,
                 frequency_per_quarter: 2,
             },
             {
                 type: "clean_oven",
-                description: "Clean the oven",
+                description: (roomName) => `Clean the oven in the ${roomName}`,
                 frequency_per_quarter: 3,
             },
             {
                 type: "clean_dishwasher",
-                description: "Clean the dishwasher",
+                description: (roomName) =>
+                    `Clean the dishwasher in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
             {
                 type: "clean_extractor_fan",
-                description: "Clean the extractor fan",
+                description: (roomName) =>
+                    `Clean the extractor fan in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
         ],
@@ -31,23 +34,26 @@ const ROOM_TYPES = [
         tasks: [
             {
                 type: "clean_grout",
-                description: "Scrub all the grout",
+                description: (roomName) =>
+                    `Scrub all the grout in the ${roomName}`,
                 frequency_per_quarter: 3,
             },
             {
                 type: "wash_shower_curtain",
-                description: "Wash the shower curtain",
+                description: (roomName) =>
+                    `Wash the shower curtain in the ${roomName}`,
                 frequency_per_quarter: 2,
             },
             {
                 type: "descale_faucet",
-                description: "Descale the faucets and shower head",
+                description: (roomName) =>
+                    `Descale the faucets and shower head in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
             {
                 type: "clean_washing_machine",
-                description:
-                    "Clean the washing machine drain and powder drawers",
+                description: (roomName) =>
+                    `Clean the washing machine drain and powder drawers in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
         ],
@@ -58,22 +64,26 @@ const ROOM_TYPES = [
         tasks: [
             {
                 type: "clean_skirting_boards",
-                description: "Clean the skirting boards",
+                description: (roomName) =>
+                    `Clean the skirting boards in the ${roomName}`,
                 frequency_per_quarter: 3,
             },
             {
                 type: "clean_doors",
-                description: "Clean the doors and door handles",
+                description: (roomName) =>
+                    `Clean the doors and door handles in the ${roomName}`,
                 frequency_per_quarter: 2,
             },
             {
                 type: "dust_shelves",
-                description: "Dust shelves and surfaces",
+                description: (roomName) =>
+                    `Dust shelves and surfaces in the ${roomName}`,
                 frequency_per_quarter: 6,
             },
             {
                 type: "clean_radiators",
-                description: "Clean the radiators inside and out",
+                description: (roomName) =>
+                    `Clean the radiators inside and out in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
         ],
@@ -84,22 +94,26 @@ const ROOM_TYPES = [
         tasks: [
             {
                 type: "wash_mattress_protector",
-                description: "Wash the mattress protector",
+                description: (roomName) =>
+                    `Wash the mattress protector in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
             {
                 type: "flip_mattress",
-                description: "Flip the mattress",
+                description: (roomName) =>
+                    `Flip the mattress in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
             {
                 type: "clean_radiators",
-                description: "Clean the radiators inside and out",
+                description: (roomName) =>
+                    `Clean the radiators inside and out in the ${roomName}`,
                 frequency_per_quarter: 1,
             },
             {
                 type: "clean_doors",
-                description: "Clean the doors and door handles",
+                description: (roomName) =>
+                    `Clean the doors and door handles in the ${roomName}`,
                 frequency_per_quarter: 2,
             },
         ],

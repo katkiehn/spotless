@@ -37,6 +37,23 @@ const Tasks = () => {
             });
     };
 
+    const getNewTasks = () => {
+        fetch("/api/tasks", {
+            method: "post",
+            headers: { "content-type": "application/json" },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                if (data.success) {
+                    setTasks((existingTasks) => {
+                        return [...existingTasks, ...data.tasks];
+                    });
+                    return;
+                }
+                setError("Sorry, we were to get new tasks. Please try again!");
+            });
+    };
+
     useEffect(() => {
         fetch("/api/tasks/weekly")
             .then((res) => res.json())
@@ -73,6 +90,7 @@ const Tasks = () => {
                     );
                 })}
             </div>
+            <button onClick={getNewTasks}>Ready for some action!</button>
             <h2>My progress</h2>
             <div className="diagram">
                 <div>
