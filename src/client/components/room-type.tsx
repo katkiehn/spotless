@@ -11,7 +11,7 @@ interface RoomTypeProps {
 
 const RoomType = (props: RoomTypeProps) => {
     return (
-        <div>
+        <div className="room-type">
             <label>Type</label>
             <select value={props.type} onChange={props.onTypeChange}>
                 <option value="kitchen">Kitchen</option>
@@ -25,7 +25,9 @@ const RoomType = (props: RoomTypeProps) => {
                 value={props.name}
                 onChange={props.onNameChange}
             />
-            <button onClick={props.onDelete}>X</button>
+            <button className="delete-button" onClick={props.onDelete}>
+                X
+            </button>
         </div>
     );
 };

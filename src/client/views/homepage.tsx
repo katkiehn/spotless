@@ -7,7 +7,9 @@ const Homepage = () => {
     return (
         <>
             <div className="homepage-wrapper">
-                <div className="background-image"></div>
+                <div className="background-image">
+                    <img src="spotless-banner.svg" alt="" />
+                </div>
             </div>
             <h2>How we have helped people</h2>
             <div className="review-wrapper">

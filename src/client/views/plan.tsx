@@ -44,7 +44,7 @@ const Plan = () => {
 
     return (
         <div>
-            <div>
+            <div className="plan">
                 <h1>Rooms</h1>
                 {rooms.map((room, index) => {
                     return (
@@ -91,6 +91,7 @@ const Plan = () => {
                     );
                 })}
                 <button
+                    className="add-button"
                     onClick={() => {
                         setRooms((existingRooms) => {
                             return [...existingRooms, NEW_ROOM];
@@ -100,9 +101,9 @@ const Plan = () => {
                     Add Room
                 </button>
             </div>
-            <div>
+            <div className="plan">
                 <h1>How busy do you wanna be?</h1>
-                <div>
+                <div className="room-type">
                     <label>Tasks per week</label>
                     <select
                         value={taskCount}
@@ -120,7 +121,9 @@ const Plan = () => {
                     </select>
                     {error && <p>{error}</p>}
                 </div>
-                <button onClick={handleSubmit}>Save</button>
+                <button className="add-button" onClick={handleSubmit}>
+                    Save
+                </button>
             </div>
         </div>
     );

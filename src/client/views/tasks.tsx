@@ -46,7 +46,12 @@ const Tasks = () => {
             .then((data) => {
                 if (data.success) {
                     setTasks((existingTasks) => {
-                        return [...existingTasks, ...data.tasks];
+                        return [
+                            ...existingTasks.filter(
+                                (existingTask) => !existingTask.completed_at
+                            ),
+                            ...data.tasks,
+                        ];
                     });
                     return;
                 }
@@ -90,7 +95,9 @@ const Tasks = () => {
                     );
                 })}
             </div>
-            <button onClick={getNewTasks}>Ready for some action!</button>
+            <button className="task-button" onClick={getNewTasks}>
+                Ready for some action!
+            </button>
             <h2>My progress</h2>
             <div className="diagram">
                 <div>
