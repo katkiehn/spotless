@@ -109,6 +109,30 @@ app.get("/logout", (req, res) => {
     res.redirect("/");
 });
 
+// ---------------------------------------------------------------------------------delete User------------------------------
+
+app.delete("/api/users/me", (req, res) => {
+    if (typeof req.session.userId === "undefined") {
+        res.status(401).json({
+            success: false,
+            error: "Please log in.",
+        });
+        return;
+    }
+
+    db.deleteUser(req.session.userId)
+        .then(() => {
+            req.session.userId = undefined;
+            res.status(201).send();
+        })
+        .catch((err) => {
+            res.status(500).json({
+                success: false,
+                error: err.message,
+            });
+        });
+});
+
 // ---------------------------------------------------------------------------customise plan--------------------------
 
 app.post("/api/plan", (req, res) => {

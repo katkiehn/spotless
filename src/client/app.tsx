@@ -13,6 +13,7 @@ import Tasks from "./views/tasks";
 import { Link } from "react-router-dom";
 import ResetPassword from "./components/reset-password";
 import PageNotFound from "./views/page-not-found";
+import DeletedAccount from "./views/account-deleted";
 
 // ---------------------------------------------------------------Routers----------------------
 const NotLoggedInRouter = () => {
@@ -49,6 +50,9 @@ const NotLoggedInRouter = () => {
                     </Route>
                     <Route exact path="/tasks">
                         <Redirect to="/login" />
+                    </Route>
+                    <Route exact path="/account-deleted">
+                        <DeletedAccount />
                     </Route>
                     <Route path="*">
                         <PageNotFound />

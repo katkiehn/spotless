@@ -34,48 +34,54 @@ const Register = () => {
 
     return (
         <>
-            
-            <div className="register-wrapper">
-                <h2>
-                    Get your personalised plan and become part of the Spotless
-                    community
-                </h2>
+            <div className="login-wrapper">
+                <div className="login">
+                    <img src="family-clean.svg" alt="" />
+                    <h2>
+                        Get your personalised plan and become part of the
+                        Spotless community
+                    </h2>
 
-                <form className="form" onSubmit={handleSubmit}>
-                    {error && <p className="form-error">{error}</p>}
-                    <FormField
-                        name="name"
-                        type="text"
-                        id="name"
-                        label=" Name"
-                        value={name}
-                        onChange={(e) => setName(e.target.value)}
-                    />
+                    <form className="form" onSubmit={handleSubmit}>
+                        {error && <p className="form-error">{error}</p>}
+                        <FormField
+                            name="name"
+                            type="text"
+                            id="name"
+                            label=" Name"
+                            value={name}
+                            onChange={(e) => setName(e.target.value)}
+                        />
 
-                    <FormField
-                        name="email"
-                        type="email"
-                        id="email"
-                        label="E-mail"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <FormField
-                        name="password"
-                        type="password"
-                        id="password"
-                        label="Password"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
+                        <FormField
+                            name="email"
+                            type="email"
+                            id="email"
+                            label="E-mail"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <FormField
+                            name="password"
+                            type="password"
+                            id="password"
+                            label="Password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
 
-                    <div className="form-field">
-                        <input type="submit" value="Register"></input>
-                    </div>
-                    <p>
-                        Already a member? <Link to="/login">Log in!</Link>
-                    </p>
-                </form>
+                        <div className="form-field">
+                            <input
+                                className="add-button"
+                                type="submit"
+                                value="Register"
+                            ></input>
+                        </div>
+                        <p>
+                            Already a member? <Link to="/login">Log in!</Link>
+                        </p>
+                    </form>
+                </div>
             </div>
         </>
     );

@@ -13,9 +13,23 @@ const getProgressPercentage = (tasks: Task[]): number => {
     return Math.floor((completedTasks.length / tasks.length) * 100);
 };
 
+const getImage = (percentage: number): string => {
+    if (percentage < 33) {
+        return "progress-0.svg";
+    }
+    if (percentage < 66) {
+        return "progress-1.svg";
+    }
+    if (percentage < 99) {
+        return "progress-2.svg";
+    }
+    return "progress-3.svg";
+};
 const Tasks = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [error, setError] = useState("");
+
+    const progressPercentage = getProgressPercentage(tasks);
 
     const updateTask = (task: Task) => {
         // if completed at is truthy, updating it means "incompleting" it, otherwise the onchange will mark it as completed
@@ -73,11 +87,14 @@ const Tasks = () => {
     }, []);
     return (
         <>
-            <div className="task-photo">
-                <img
-                    src="https://media.istockphoto.com/vectors/concept-of-apathy-vector-id1347293963?b=1&k=20&m=1347293963&s=612x612&h=WUlF-mgSvwdjEvL89v3A3W3pjcbotabvWORoCZNvCqE="
-                    alt=""
-                />
+            <div className="image-wrapper">
+                <div className="task-photo">
+                    <img
+                        className="progress-photo"
+                        src={getImage(progressPercentage)}
+                        alt=""
+                    />
+                </div>
             </div>
             <h2>My weekly tasks</h2>
             <div className="all-tasks">
@@ -89,6 +106,7 @@ const Tasks = () => {
                         return (
                             <div className="task" key={task.task_id}>
                                 <input
+                                    className="checkbox"
                                     type="checkbox"
                                     defaultChecked={!!task.completed_at}
                                     id={`task-${task.task_id}`}
@@ -104,14 +122,17 @@ const Tasks = () => {
                         );
                     })}
             </div>
-            <button className="task-button" onClick={getNewTasks}>
+            <button
+                className="add-button"
+                id="task-button"
+                onClick={getNewTasks}
+            >
                 Ready for some action!
             </button>
-            <h2>My progress</h2>
-            <ProgressBar
-                completed={getProgressPercentage(tasks)}
-                bgcolor="#f7b733"
-            />
+            <div className="progress">
+                <h2>My progress</h2>
+                <ProgressBar completed={progressPercentage} bgcolor="#f7b733" />
+            </div>
         </>
     );
 };

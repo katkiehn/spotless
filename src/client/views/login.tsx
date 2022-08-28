@@ -36,6 +36,7 @@ const Login = () => {
             <div className="login-wrapper">
                 <div className="login">
                     <img src="family-clean.svg" alt="" />
+                    <h2>Nice to see you again!</h2>
                     <form className="form" onSubmit={handleSubmit}>
                         {error && <p className="form-error">{error}</p>}
                         {/* msg from our reset page which redirected us here after successful code input */}

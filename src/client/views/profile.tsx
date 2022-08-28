@@ -1,6 +1,7 @@
 //  page where user can change their account details
 import React from "react";
 import { Link } from "react-router-dom";
+import Delete from "../components/delete";
 const Profile = () => {
     return (
         <>
@@ -18,6 +19,7 @@ const Profile = () => {
                     Here we can eventually create a household/group with several
                     people
                 </p>
+                <Delete />
             </div>
         </>
     );

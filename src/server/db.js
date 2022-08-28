@@ -67,6 +67,17 @@ module.exports.getUserById = (id) => {
             return result.rows[0];
         });
 };
+
+// --------------------------------------------------------------------------------delete user--------------------------------
+
+module.exports.deleteUser = (user_id) => {
+    return db.query(
+        `DELETE FROM users 
+        WHERE id=$1
+        `,
+        [user_id]
+    );
+};
 // ------------------------------------------------------------------------customise plan--------------------------------------
 
 module.exports.updateTaskCount = (taskCount, id) => {
