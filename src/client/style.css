@@ -30,7 +30,6 @@ h2 {
     text-align: center;
     /* text-decoration: underline; */
     margin: 20px auto;
-
     color: #ffffff;
 }
 
@@ -165,9 +164,16 @@ header a:hover {
     display: flex;
     justify-content: center;
     gap: 40px;
-    padding: 40px 0;
+    padding: 20px 0;
     width: 80%;
     margin: 0 auto;
+}
+.all-tasks p {
+    text-align: center;
+    line-height: 1.5;
+    color: #ffffff;
+    font-size: 20px;
+    margin-top: 0;
 }
 .task {
     color: #ffffff;

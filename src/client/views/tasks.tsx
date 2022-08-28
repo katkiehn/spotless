@@ -97,7 +97,15 @@ const Tasks = () => {
                 </div>
             </div>
             <h2>My weekly tasks</h2>
+
             <div className="all-tasks">
+                {progressPercentage === 100 && (
+                    <p>
+                        Congratulations! You've completed all tasks!
+                        <br /> If you have some elbow grease left and time to
+                        spare, feel free to click the button below
+                    </p>
+                )}
                 {/* queryied for all tasks from this week to show progress, but won't show
                 the descriptions of the completed tasks on the UI */}
                 {tasks

@@ -37,7 +37,7 @@ const Account = () => {
                     </div>
                     <div className="account-text">
                         <h4>My Home</h4>
-                        <p>Rooms I have on spotless</p>
+                        <p>Rooms I have on spotless:</p>
                         <ul>
                             {rooms.map((room) => (
                                 <li key={room.room_id}>{room.name}</li>
