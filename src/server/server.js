@@ -154,7 +154,7 @@ app.post("/api/plan", (req, res) => {
         });
 });
 
-app.get("/api/plan/rooms", (req, res) => {
+app.get("/api/plan", (req, res) => {
     if (typeof req.session.userId === "undefined") {
         res.status(401).json({
             success: false,
@@ -162,10 +162,16 @@ app.get("/api/plan/rooms", (req, res) => {
         });
         return;
     }
-
-    db.getRoomsByUserId(req.session.userId)
-        .then((rooms) => {
-            res.json({ rooms, success: true });
+    Promise.all([
+        db.getRoomsByUserId(req.session.userId),
+        db.getUserById(req.session.userId),
+    ])
+        .then(([rooms, user]) => {
+            res.json({
+                rooms,
+                tasks_per_week: user.tasks_per_week,
+                success: true,
+            });
         })
         .catch((err) => {
             res.status(500).json({

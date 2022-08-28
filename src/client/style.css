@@ -16,6 +16,10 @@ header {
     align-items: center;
     padding: 20px 0;
 }
+img {
+    display: block;
+    max-width: 100%;
+}
 
 header h1 {
     color: #f7b733;
@@ -172,24 +176,25 @@ header a:hover {
     margin: 0 auto;
     display: block;
 }
-
-.plan {
+.plan-wrapper {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    justify-content: space-around;
+    margin-top: 50px;
+}
+.plan {
     margin-bottom: 40px;
+    margin-top: 40px;
 }
 .plan h1 {
     color: #ffffff;
-    text-align: center;
 }
 
 .add-button {
     padding: 5px;
-    margin: 20px;
+    margin: 20px 0;
     font-size: 14px;
     background-color: #f7b733;
-    color: #ffffff;
+    color: rgb(6, 75, 114);
     border: 2px solid transparent;
     border-radius: 3px;
 }
@@ -204,12 +209,17 @@ header a:hover {
     background-color: #ffffff;
     color: #f7b733;
     border: 2px solid transparent;
+    border-radius: 3px;
 }
 
 .delete-button:hover {
     border: 2px solid #f7b733;
 }
 
+.room-type-field {
+    display: inline-block;
+    margin-right: 30px;
+}
 .room-type label {
     color: #ffffff;
     font-size: 20px;
@@ -223,7 +233,6 @@ header a:hover {
 
 .room-type input {
     font-size: 16px;
-    margin-left: 15px;
 }
 .about-wrapper {
     max-width: 800px;
@@ -259,4 +268,90 @@ header a:hover {
     background-color: bgcolor;
     border-radius: inherit;
     text-align: right;
+}
+
+.loader-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loader {
+    width: 16em;
+    height: 8em;
+    position: relative;
+    overflow: hidden;
+}
+
+.loader::before,
+.loader::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+}
+
+.loader::before {
+    width: inherit;
+    height: 0.2em;
+    background-color: hsla(0, 0%, 85%);
+}
+
+.loader::after {
+    box-sizing: border-box;
+    width: 50%;
+    height: inherit;
+    border: 0.2em solid hsla(0, 0%, 85%);
+    border-radius: 50%;
+    left: 25%;
+}
+
+.loader span {
+    position: absolute;
+    width: 5%;
+    height: 10%;
+    background-color: white;
+    border-radius: 50%;
+    bottom: 0.2em;
+    left: -5%;
+    animation: 2s linear infinite;
+    transform-origin: 50% -3em;
+    animation-name: run, rotating;
+}
+
+.loader span:nth-child(2) {
+    animation-delay: 0.075s;
+}
+.loader span:nth-child(3) {
+    animation-delay: 0.15s;
+}
+
+@keyframes run {
+    0% {
+        left: -5%;
+    }
+    10%,
+    60% {
+        left: calc((100% - 5%) / 2);
+    }
+    70%,
+    100% {
+        left: 100%;
+    }
+}
+
+@keyframes rotating {
+    0%,
+    10% {
+        transform: rotate(0deg);
+    }
+    60%,
+    100% {
+        transform: rotate(-1turn);
+    }
+}
+
+.loader-cat {
+    max-width: 500px;
+    height: 500px;
+    margin: 0 auto;
 }

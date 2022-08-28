@@ -12,22 +12,26 @@ interface RoomTypeProps {
 const RoomType = (props: RoomTypeProps) => {
     return (
         <div className="room-type">
-            <label>Type</label>
-            <select value={props.type} onChange={props.onTypeChange}>
-                <option value="kitchen">Kitchen</option>
-                <option value="bathroom">Bathroom</option>
-                <option value="bedroom">Bedroom</option>
-                <option value="livingroom">Living room</option>
-            </select>
-            <label>Name of the room</label>
-            <input
-                type="text"
-                value={props.name}
-                onChange={props.onNameChange}
-            />
-            <button className="delete-button" onClick={props.onDelete}>
-                X
-            </button>
+            <div className="room-type-field">
+                <label>Type</label>
+                <select value={props.type} onChange={props.onTypeChange}>
+                    <option value="kitchen">Kitchen</option>
+                    <option value="bathroom">Bathroom</option>
+                    <option value="bedroom">Bedroom</option>
+                    <option value="livingroom">Living room</option>
+                </select>
+            </div>
+            <div className="room-type-field">
+                <label>Name of the room</label>
+                <input
+                    type="text"
+                    value={props.name}
+                    onChange={props.onNameChange}
+                />
+                <button className="delete-button" onClick={props.onDelete}>
+                    X
+                </button>
+            </div>
         </div>
     );
 };
