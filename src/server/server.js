@@ -194,6 +194,7 @@ app.get("/api/plan", (req, res) => {
             res.json({
                 rooms,
                 tasks_per_week: user.tasks_per_week,
+                user,
                 success: true,
             });
         })

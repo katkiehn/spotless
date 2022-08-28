@@ -49,6 +49,7 @@ const Delete = () => {
             )}
             {error && <p className="form-error">{error}</p>}
             <button
+                id="delete-button"
                 className="add-button"
                 onClick={() => {
                     setShowModal(true);

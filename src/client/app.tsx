@@ -8,7 +8,7 @@ import Login from "./views/login";
 import Plan from "./views/plan";
 import Benefits from "./views/potential-customer";
 import About from "./views/about";
-import Profile from "./views/profile";
+import Account from "./views/account";
 import Tasks from "./views/tasks";
 import { Link } from "react-router-dom";
 import ResetPassword from "./components/reset-password";
@@ -73,7 +73,7 @@ const LoggedInRouter = () => {
                     <Link to="/">
                         <h1>SPOTLESS</h1>
                     </Link>
-                    <Link to="/profile"> My Account</Link>
+                    <Link to="/account"> My Account</Link>
                     <a href="/logout">Log Out</a>
                 </header>
                 <Switch>
@@ -86,8 +86,14 @@ const LoggedInRouter = () => {
                     <Route exact path="/plan">
                         <Plan />
                     </Route>
-                    <Route exact path="/profile">
-                        <Profile />
+                    <Route exact path="/account">
+                        <Account />
+                    </Route>
+                    <Route exact path="/benefits">
+                        <Benefits />
+                    </Route>
+                    <Route exact path="/about">
+                        <About />
                     </Route>
                     <Route path="*">
                         <PageNotFound />

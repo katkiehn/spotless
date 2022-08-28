@@ -478,3 +478,36 @@ header a:hover {
 .goodbye img {
     max-width: 400px;
 }
+
+.account-wrapper {
+    margin: 40px auto;
+    max-width: 1000px;
+}
+.account {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    color: #ffffff;
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 50px;
+}
+.account img {
+    width: 200px;
+}
+
+.account-text {
+    margin: 30px;
+    width: 400px;
+}
+#delete-button {
+    display: block;
+    margin: 0 auto;
+}
+
+.me-link {
+    color: #ffffff;
+}
+.me-link:hover {
+    color: #f7b733;
+}

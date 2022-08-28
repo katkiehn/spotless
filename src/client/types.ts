@@ -7,3 +7,15 @@ export interface Task {
     created_at: string;
     completed_at: string;
 }
+
+export interface User {
+    id: number;
+    name: string;
+    email: string;
+}
+
+export interface Room {
+    room_id: number;
+    type: string;
+    name: string;
+}
