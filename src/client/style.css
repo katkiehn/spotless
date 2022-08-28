@@ -245,3 +245,18 @@ header a:hover {
 .about-img img {
     max-width: 400px;
 }
+
+.progress-container {
+    height: 20px;
+    width: 60%;
+    background-color: #e0e0de;
+    border-radius: 50px;
+    margin: 0 auto;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: bgcolor;
+    border-radius: inherit;
+    text-align: right;
+}

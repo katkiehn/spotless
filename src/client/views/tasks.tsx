@@ -3,6 +3,16 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Task } from "../types";
+import ProgressBar from "../components/progress-bar";
+
+const getProgressPercentage = (tasks: Task[]): number => {
+    if (tasks.length === 0) {
+        return 0;
+    }
+    const completedTasks = tasks.filter((task) => task.completed_at);
+    return Math.floor((completedTasks.length / tasks.length) * 100);
+};
+
 const Tasks = () => {
     const [tasks, setTasks] = useState<Task[]>([]);
     const [error, setError] = useState("");
@@ -46,12 +56,7 @@ const Tasks = () => {
             .then((data) => {
                 if (data.success) {
                     setTasks((existingTasks) => {
-                        return [
-                            ...existingTasks.filter(
-                                (existingTask) => !existingTask.completed_at
-                            ),
-                            ...data.tasks,
-                        ];
+                        return [...existingTasks, ...data.tasks];
                     });
                     return;
                 }
@@ -76,34 +81,37 @@ const Tasks = () => {
             </div>
             <h2>My weekly tasks</h2>
             <div className="all-tasks">
-                {tasks.map((task) => {
-                    return (
-                        <div className="task" key={task.task_id}>
-                            <input
-                                type="checkbox"
-                                defaultChecked={!!task.completed_at}
-                                id={`task-${task.task_id}`}
-                                onChange={() => updateTask(task)}
-                            />
-                            <label
-                                className="task-tick"
-                                htmlFor={`task-${task.task_id}`}
-                            >
-                                {task.description}
-                            </label>
-                        </div>
-                    );
-                })}
+                {/* queryied for all tasks from this week to show progress, but won't show
+                the descriptions of the completed tasks on the UI */}
+                {tasks
+                    .filter((task) => !task.completed_at)
+                    .map((task) => {
+                        return (
+                            <div className="task" key={task.task_id}>
+                                <input
+                                    type="checkbox"
+                                    defaultChecked={!!task.completed_at}
+                                    id={`task-${task.task_id}`}
+                                    onChange={() => updateTask(task)}
+                                />
+                                <label
+                                    className="task-tick"
+                                    htmlFor={`task-${task.task_id}`}
+                                >
+                                    {task.description}
+                                </label>
+                            </div>
+                        );
+                    })}
             </div>
             <button className="task-button" onClick={getNewTasks}>
                 Ready for some action!
             </button>
             <h2>My progress</h2>
-            <div className="diagram">
-                <div>
-                    <img className="diagram-img" src="chart_pie.svg" alt="" />
-                </div>
-            </div>
+            <ProgressBar
+                completed={getProgressPercentage(tasks)}
+                bgcolor="#f7b733"
+            />
         </>
     );
 };

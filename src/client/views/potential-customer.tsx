@@ -27,7 +27,7 @@ const Benefits = () => {
                             {" "}
                             Tired of being the only one in your household who
                             takes care of the grittier taks, like cleaning the
-                            fridge or cleaning door handles, which don nott need
+                            fridge or cleaning door handles, which do not need
                             to be done on a weekly basis? Want to have tasks
                             randomly assigned to your household members and
                             allow everyone to have access to the plan?
