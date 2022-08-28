@@ -34,8 +34,8 @@ const Login = () => {
     return (
         <>
             <div className="login-wrapper">
-                <h2>Hello there! Nice to see you again.</h2>
                 <div className="login">
+                    <img src="family-clean.svg" alt="" />
                     <form className="form" onSubmit={handleSubmit}>
                         {error && <p className="form-error">{error}</p>}
                         {/* msg from our reset page which redirected us here after successful code input */}
@@ -63,18 +63,23 @@ const Login = () => {
                             onChange={(e) => setPassword(e.target.value)}
                         />
                         <div className="form-field">
-                            <input type="submit" value="Login"></input>
+                            <input
+                                className="add-button"
+                                type="submit"
+                                value="Login"
+                            ></input>
                         </div>
-                        <p>
-                            Not a member just yet?{" "}
-                            <a href="/register">Sign up!</a>
-                        </p>
-                        <p>
-                            Forgotten your password?{" "}
-                            <a href="/reset-password">Reset Password</a>
-                        </p>
+                        <div>
+                            <p>
+                                Not a member just yet?{" "}
+                                <a href="/register">Sign up!</a>
+                            </p>
+                            <p>
+                                Forgotten your password?{" "}
+                                <a href="/reset-password">Reset Password</a>
+                            </p>
+                        </div>
                     </form>
-                    <img src="cleaning-mop-svgrepo-com.svg" alt="" />
                 </div>
             </div>
         </>

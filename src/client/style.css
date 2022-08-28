@@ -125,14 +125,29 @@ header a:hover {
 
 .login {
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     color: #ffffff;
+    margin-top: 50px;
 }
 
 .login img {
-    width: 400px;
+    width: 600px;
+}
+.form {
+    display: flex;
+    flex-direction: column;
+}
+.form-field {
+    padding: 10px;
+    font-size: 20px;
+    display: flex;
 }
 
+.form-field label {
+    width: 100px;
+}
 .all-tasks {
     display: flex;
     justify-content: center;
@@ -247,12 +262,13 @@ header a:hover {
     font-size: 20px;
     line-height: 30px;
 }
-.about-img {
+/* .about-img {
     display: flex;
     flex-direction: row-reverse;
-}
+} */
 .about-img img {
-    max-width: 400px;
+    max-width: 300px;
+    float: right;
 }
 
 .progress-container {
