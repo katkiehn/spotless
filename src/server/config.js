@@ -15,10 +15,9 @@ const ROOM_TYPES = [
                 frequency_per_quarter: 3,
             },
             {
-                type: "clean_dishwasher",
-                description: (roomName) =>
-                    `Clean the dishwasher in the ${roomName}`,
-                frequency_per_quarter: 1,
+                type: "do_dishes",
+                description: (roomName) => `Do the dishes in the ${roomName}`,
+                frequency_per_quarter: 6,
             },
             {
                 type: "clean_extractor_fan",
@@ -69,10 +68,10 @@ const ROOM_TYPES = [
                 frequency_per_quarter: 3,
             },
             {
-                type: "clean_doors",
+                type: "clean_all_devices",
                 description: (roomName) =>
-                    `Clean the doors and door handles in the ${roomName}`,
-                frequency_per_quarter: 2,
+                    `Clean the screen of all your devices in the ${roomName}`,
+                frequency_per_quarter: 4,
             },
             {
                 type: "dust_shelves",
