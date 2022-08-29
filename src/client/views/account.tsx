@@ -37,7 +37,7 @@ const Account = () => {
                     </div>
                     <div className="account-text">
                         <h4>My Home</h4>
-                        <p>Rooms I have on spotless:</p>
+                        <p>Rooms I have on Spotless:</p>
                         <ul>
                             {rooms.map((room) => (
                                 <li key={room.room_id}>{room.name}</li>
@@ -56,8 +56,8 @@ const Account = () => {
                     <div className="account-text">
                         <h4> My Household</h4>
                         <p>
-                            Here we can eventually create a household/group with
-                            several people
+                            Here we will eventually be able to create a
+                            household/group with several people
                         </p>
                     </div>
                 </div>

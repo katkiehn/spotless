@@ -9,7 +9,7 @@
         "dev:client": "webpack serve --mode development",
         "dev:server": "nodemon --watch src/server --ignore src/server/uploads src/server/server.js",
         "dev": "concurrently \"npm:dev:*\" --kill-others",
-        "start": "node server/server.js"
+        "start": "node src/server/server.js"
     },
     "repository": {
         "type": "git",

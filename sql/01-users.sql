@@ -9,9 +9,3 @@ CREATE TABLE users(
     tasks_per_week INTEGER NOT NULL DEFAULT 2
 );
 
-CREATE TABLE reset_codes(
-    id SERIAL PRIMARY KEY,
-    email VARCHAR NOT NULL,
-    code VARCHAR NOT NULL UNIQUE,
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-  );
