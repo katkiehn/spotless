@@ -10,12 +10,7 @@ const { enrichRoomsWithTasks, getAllPossibleTasks } = require("./tasks");
 const aws = require("aws-sdk");
 const cryptoRandomString = require("crypto-random-string");
 
-let secrets;
-if (process.env.NODE_ENV == "production") {
-    secrets = process.env; // in prod the secrets are environment variables
-} else {
-    secrets = require("../../secrets"); // in dev they are in secrets.json which is listed in .gitignore
-}
+const secrets = require("../../secrets"); // in dev they are in secrets.json which is listed in .gitignore
 
 const ses = new aws.SES({
     accessKeyId: secrets.AWS_KEY,
