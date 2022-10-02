@@ -380,6 +380,6 @@ app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "..", "client", "index.html"));
 });
 
-server.listen(process.env.PORT || 3001, function () {
+server.listen(process.env.SPOTLESS_PORT || 3000, function () {
     console.log("I'm listening.");
 });
