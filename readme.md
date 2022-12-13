@@ -13,5 +13,10 @@ This allows the user to not have to think about whether it is time again to clea
 - Users can decide how many cleaning tasks per week they are willing to tackle
 - Cleaning progress is shown in a motivating, visually stimulating way
 
+# previews
+
+register & login page
+
+
 
 
