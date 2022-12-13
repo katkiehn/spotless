@@ -2,7 +2,7 @@
 A website to make your cleaning process easier
 https://spotless.katkiehn.de/
 
-#overview
+# overview
 
 Spotless is a place where cleaning tasks which do not need to be done weekly are stored in a database.  According to the users' customisation, several tasks will be assigned. Tasks are assigned somewhat randomly but each task in the database has a frequency which determines how often it will appear in a certain time frame.
 This allows the user to not have to think about whether it is time again to clean the fridge or dust the heaters.
