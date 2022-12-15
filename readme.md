@@ -18,8 +18,16 @@ This allows the user to not have to think about whether it is time again to clea
 ![spotless overview2](https://user-images.githubusercontent.com/90865431/207874229-330499a7-f9ca-42ee-ae00-58d9616186ac.gif)
 
 
-###register & login page
+### register & login page
 
 ![spotless register](https://user-images.githubusercontent.com/90865431/207874101-affc6cdb-03fe-4448-9d4a-6d55ecccb6a6.gif)
 
-###
+### customising rooms
+
+![spotless rooms](https://user-images.githubusercontent.com/90865431/207874493-3b930e3b-08da-4d50-907f-cb1b5b43cc56.gif)
+
+
+### progress page
+
+![spotless tasks](https://user-images.githubusercontent.com/90865431/207874597-c31e7652-28f9-417d-9b40-2cdf75981a6e.gif)
+
