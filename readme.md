@@ -30,7 +30,8 @@ This allows the user to not have to think about whether it is time again to clea
 ### progress page
 
 
-![spotless overview](https://user-images.githubusercontent.com/90865431/207874818-652415cc-f007-485d-aa3c-7ffb7a00ae98.gif)
+![spotless tasks](https://user-images.githubusercontent.com/90865431/207875181-fbefc74b-3ad8-4190-9b9b-76f96a070a63.gif)
+
 
 
 ### deleting your account
