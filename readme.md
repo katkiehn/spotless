@@ -29,5 +29,11 @@ This allows the user to not have to think about whether it is time again to clea
 
 ### progress page
 
-![spotless tasks](https://user-images.githubusercontent.com/90865431/207874597-c31e7652-28f9-417d-9b40-2cdf75981a6e.gif)
 
+![spotless overview](https://user-images.githubusercontent.com/90865431/207874818-652415cc-f007-485d-aa3c-7ffb7a00ae98.gif)
+
+
+### deleting your account
+
+
+![spotless delete](https://user-images.githubusercontent.com/90865431/207874898-a70b939c-32b8-4821-870f-1ad84b60b468.gif)
